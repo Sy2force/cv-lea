@@ -66,12 +66,12 @@ const Card = ({ children, className = '', icon: Icon, title }) => (
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.4 }}
-    className={`bg-white rounded-xl shadow-md border border-slate-100 hover:shadow-lg transition-shadow p-6 ${className}`}
+    className={`bg-white rounded-xl shadow-md border border-slate-100 hover:shadow-lg transition-shadow p-4 sm:p-5 md:p-6 ${className}`}
   >
     {title && (
-      <div className="flex items-center gap-2 mb-4">
-        {Icon && <Icon className="w-5 h-5 text-sky-600" />}
-        <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
+      <div className="flex items-center gap-2 mb-3 md:mb-4">
+        {Icon && <Icon className="w-4 h-4 md:w-5 md:h-5 text-sky-600" />}
+        <h3 className="text-base md:text-lg font-semibold text-gray-800">{title}</h3>
       </div>
     )}
     {children}
@@ -664,51 +664,55 @@ export default function App() {
   }
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-sky-50 py-8 px-4 ${language === 'he' ? 'rtl' : 'ltr'}`}>
-      <div className="max-w-4xl mx-auto">
+    <div className={`min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-sky-50 py-4 sm:py-6 md:py-8 px-2 sm:px-4 ${language === 'he' ? 'rtl' : 'ltr'}`}>
+      <div className="max-w-4xl mx-auto w-full">
         {/* Action Buttons */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-wrap gap-3 justify-center mb-8 no-print"
+          className="flex flex-wrap gap-2 sm:gap-3 justify-center mb-4 md:mb-8 no-print"
         >
           <button
             onClick={handlePrint}
-            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg hover:from-primary-700 hover:to-primary-600 transition-all shadow-md hover:shadow-lg"
+            className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg hover:from-primary-700 hover:to-primary-600 transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
           >
-            <Printer className="w-4 h-4" />
-            {translations[language].buttons.print}
+            <Printer className="w-3 h-3 sm:w-4 sm:h-4" />
+            <span className="hidden sm:inline">{translations[language].buttons.print}</span>
+            <span className="sm:hidden">PDF</span>
           </button>
           <button
             onClick={handleLanguageToggle}
-            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-500 text-white rounded-lg hover:from-purple-700 hover:to-purple-600 transition-all shadow-md hover:shadow-lg"
+            className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-purple-600 to-purple-500 text-white rounded-lg hover:from-purple-700 hover:to-purple-600 transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
           >
-            <Languages className="w-4 h-4" />
+            <Languages className="w-3 h-3 sm:w-4 sm:h-4" />
             {language === 'he' ? 'English' : 'עברית'}
           </button>
           {!editable ? (
             <button
               onClick={handleEditToggle}
-              className="flex items-center gap-2 px-6 py-3 bg-white text-primary-600 border-2 border-primary-200 rounded-lg hover:border-primary-400 hover:bg-primary-50 transition-all shadow-sm hover:shadow-md"
+              className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-white text-primary-600 border-2 border-primary-200 rounded-lg hover:border-primary-400 hover:bg-primary-50 transition-all shadow-sm hover:shadow-md text-sm sm:text-base"
             >
-              <Edit3 className="w-4 h-4" />
-              {translations[language].buttons.edit}
+              <Edit3 className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">{translations[language].buttons.edit}</span>
+              <span className="sm:hidden">Edit</span>
             </button>
           ) : (
             <>
               <button
                 onClick={handleSave}
-                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white rounded-lg hover:from-emerald-700 hover:to-emerald-600 transition-all shadow-md hover:shadow-lg"
+                className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white rounded-lg hover:from-emerald-700 hover:to-emerald-600 transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
               >
-                <Save className="w-4 h-4" />
-                {translations[language].buttons.save}
+                <Save className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">{translations[language].buttons.save}</span>
+                <span className="sm:hidden">Save</span>
               </button>
               <button
                 onClick={handleReset}
-                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-rose-600 to-rose-500 text-white rounded-lg hover:from-rose-700 hover:to-rose-600 transition-all shadow-md hover:shadow-lg"
+                className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-rose-600 to-rose-500 text-white rounded-lg hover:from-rose-700 hover:to-rose-600 transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
               >
-                <X className="w-4 h-4" />
-                {translations[language].buttons.reset}
+                <X className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">{translations[language].buttons.reset}</span>
+                <span className="sm:hidden">Reset</span>
               </button>
             </>
           )}
@@ -722,7 +726,7 @@ export default function App() {
           className="cv-container bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100"
         >
           {/* Header */}
-          <div className="bg-gradient-to-l from-primary-900 via-primary-800 to-primary-700 text-white p-6 md:p-8 relative overflow-hidden">
+          <div className="bg-gradient-to-l from-primary-900 via-primary-800 to-primary-700 text-white p-4 sm:p-6 md:p-8 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-l from-primary-900/50 to-transparent"></div>
             <div className="relative z-10">
             <motion.div
@@ -730,36 +734,36 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between md:gap-6 mb-4">
-                <div className="flex items-center gap-3 mb-3 md:mb-0">
-                  <User className="w-6 h-6 text-white flex-shrink-0" />
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between md:gap-6 mb-3 md:mb-4">
+                <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-0">
+                  <User className="w-5 h-5 md:w-6 md:h-6 text-white flex-shrink-0" />
                   {editable ? (
                     <input
                       type="text"
                       value={cv.name}
                       onChange={(e) => setCv({ ...cv, name: e.target.value })}
-                      className="bg-transparent border-none text-white text-xl font-semibold focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-2 py-1 w-full max-w-xs"
+                      className="bg-transparent border-none text-white text-lg md:text-xl font-semibold focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-2 py-1 w-full max-w-xs"
                     />
                   ) : (
-                    <span className="text-white text-xl font-semibold truncate">{cv.name}</span>
+                    <span className="text-white text-lg md:text-xl font-semibold truncate">{cv.name}</span>
                   )}
                 </div>
                 <div className="flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-primary-200 flex-shrink-0" />
+                  <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-primary-200 flex-shrink-0" />
                   {editable ? (
                     <input
                       type="text"
                       value={cv.title}
                       onChange={(e) => setCv({ ...cv, title: e.target.value })}
-                      className="bg-transparent border-none text-white text-base focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-2 py-1 w-full max-w-xs"
+                      className="bg-transparent border-none text-white text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-2 py-1 w-full max-w-xs"
                     />
                   ) : (
-                    <span className="text-white text-base truncate">{cv.title}</span>
+                    <span className="text-white text-sm md:text-base truncate">{cv.title}</span>
                   )}
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4">
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-primary-200 flex-shrink-0" />
                   <div className="min-w-0 flex-1">
@@ -830,9 +834,9 @@ export default function App() {
           </div>
 
           {/* Main Content */}
-          <div className="p-8">
+          <div className="p-4 sm:p-6 md:p-8">
             {/* Profile Section */}
-            <Card className="mb-6" icon={User} title={translations[language].sections.profile}>
+            <Card className="mb-3 md:mb-4 lg:mb-6" icon={User} title={translations[language].sections.profile}>
               <Field
                 label=""
                 value={cv.profile}
@@ -843,7 +847,7 @@ export default function App() {
             </Card>
 
             {/* Objective Section */}
-            <Card className="mb-6" icon={Sparkles} title={translations[language].sections.objective}>
+            <Card className="mb-3 md:mb-4 lg:mb-6" icon={Sparkles} title={translations[language].sections.objective}>
               <Field
                 label=""
                 value={cv.objective}
@@ -854,7 +858,7 @@ export default function App() {
             </Card>
 
             {/* Education Section */}
-            <Card className="mb-6" icon={GraduationCap} title={translations[language].sections.education}>
+            <Card className="mb-3 md:mb-4 lg:mb-6" icon={GraduationCap} title={translations[language].sections.education}>
               {sections.education.map((item) => (
                 <TimelineItem
                   key={item.id}
@@ -867,7 +871,7 @@ export default function App() {
             </Card>
 
             {/* Experience Section */}
-            <Card className="mb-6" icon={Briefcase} title={translations[language].sections.experience}>
+            <Card className="mb-3 md:mb-4 lg:mb-6" icon={Briefcase} title={translations[language].sections.experience}>
               {sections.experience.map((item) => (
                 <TimelineItem
                   key={item.id}
@@ -880,7 +884,7 @@ export default function App() {
             </Card>
 
             {/* Military Service Section */}
-            <Card className="mb-6" icon={Shield} title={translations[language].sections.military}>
+            <Card className="mb-3 md:mb-4 lg:mb-6" icon={Shield} title={translations[language].sections.military}>
               <TimelineItem
                 {...sections.military}
                 editable={editable}
@@ -890,8 +894,8 @@ export default function App() {
             </Card>
 
             {/* Computer Skills Section */}
-            <Card className="mb-6" icon={Laptop} title={translations[language].sections.skills}>
-              <ul className="space-y-2">
+            <Card className="mb-3 md:mb-4 lg:mb-6" icon={Laptop} title={translations[language].sections.skills}>
+              <ul className="space-y-1 md:space-y-2">
                 {sections.skills.map((skill, idx) => (
                   <li key={idx}>
                     <Field
@@ -910,8 +914,8 @@ export default function App() {
             </Card>
 
             {/* Volunteering Section */}
-            <Card className="mb-6" icon={HeartHandshake} title={translations[language].sections.volunteering}>
-              <ul className="space-y-2">
+            <Card className="mb-3 md:mb-4 lg:mb-6" icon={HeartHandshake} title={translations[language].sections.volunteering}>
+              <ul className="space-y-1 md:space-y-2">
                 {sections.volunteering.map((item, idx) => (
                   <li key={idx}>
                     <Field
@@ -930,8 +934,8 @@ export default function App() {
             </Card>
 
             {/* Languages Section */}
-            <Card className="mb-6" icon={Languages} title={translations[language].sections.languages}>
-              <ul className="space-y-2">
+            <Card className="mb-3 md:mb-4 lg:mb-6" icon={Languages} title={translations[language].sections.languages}>
+              <ul className="space-y-1 md:space-y-2">
                 {sections.languages.map((lang, idx) => (
                   <li key={idx}>
                     <Field
@@ -950,8 +954,8 @@ export default function App() {
             </Card>
 
             {/* Sports Skills Section */}
-            <Card className="mb-6" icon={Trophy} title={translations[language].sections.sports}>
-              <ul className="space-y-2">
+            <Card className="mb-3 md:mb-4 lg:mb-6" icon={Trophy} title={translations[language].sections.sports}>
+              <ul className="space-y-1 md:space-y-2">
                 {sections.sports.map((sport, idx) => (
                   <li key={idx}>
                     <Field
@@ -970,8 +974,8 @@ export default function App() {
             </Card>
 
             {/* Strengths Section */}
-            <Card className="mb-6" icon={Sparkles} title={translations[language].sections.strengths}>
-              <div className="flex flex-wrap gap-2">
+            <Card className="mb-3 md:mb-4 lg:mb-6" icon={Sparkles} title={translations[language].sections.strengths}>
+              <div className="flex flex-wrap gap-1 md:gap-2">
                 {sections.strengths.map((strength, idx) => (
                   <Tag key={idx} editable={editable}>
                     {strength}
