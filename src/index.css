@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+@layer utilities {
+  .print-hidden {
+    @apply hidden;
+  }
+}
+
+@media print {
+  .print-hidden {
+    display: none !important;
+  }
+  
+  .cv-container {
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+  
+  body {
+    background: white !important;
+  }
+  
+  /* Reduce spacing for single page */
+  .p-8 {
+    padding: 1rem !important;
+  }
+  
+  .mb-6 {
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .mb-2 {
+    margin-bottom: 0.25rem !important;
+  }
+  
+  .pb-6 {
+    padding-bottom: 0.5rem !important;
+  }
+  
+  .pr-6 {
+    padding-right: 0.75rem !important;
+  }
+  
+  .gap-4 {
+    gap: 0.5rem !important;
+  }
+  
+  .gap-2 {
+    gap: 0.25rem !important;
+  }
+  
+  .gap-3 {
+    gap: 0.5rem !important;
+  }
+  
+  /* Reduce font sizes slightly */
+  h3 {
+    font-size: 1rem !important;
+  }
+  
+  p, span, li {
+    font-size: 0.85rem !important;
+  }
+  
+  /* Reduce header padding */
+  .text-white.p-8 {
+    padding: 1rem !important;
+  }
+  
+  /* Ensure header text is visible */
+  .text-white {
+    color: white !important;
+  }
+  
+  /* Hide decorative elements */
+  .absolute {
+    display: none !important;
+  }
+}

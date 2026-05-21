@@ -1,0 +1,997 @@
+import React, { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Calendar,
+  Printer,
+  Edit3,
+  Save,
+  X,
+  GraduationCap,
+  Briefcase,
+  Shield,
+  Languages,
+  Laptop,
+  HeartHandshake,
+  Trophy,
+  User,
+  Sparkles
+} from 'lucide-react'
+
+// Reusable Field Component
+const Field = ({ label, value, onChange, editable, multiline = false, icon: Icon }) => {
+  if (editable) {
+    if (multiline) {
+      return (
+        <div className="mb-3">
+          {label && <label className="block text-xs text-gray-500 mb-1">{label}</label>}
+          <textarea
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm resize-none"
+            rows={3}
+          />
+        </div>
+      )
+    }
+    return (
+      <div className="mb-3">
+        {label && <label className="block text-xs text-gray-500 mb-1">{label}</label>}
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm"
+        />
+      </div>
+    )
+  }
+
+  return (
+    <div className="flex items-start gap-2 mb-2">
+      {Icon && <Icon className="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0" />}
+      <div>
+        {label && <span className="text-slate-500 text-sm ml-2">{label}:</span>}
+        <span className="text-slate-800 text-sm">{value}</span>
+      </div>
+    </div>
+  )
+}
+
+// Reusable Card Component
+const Card = ({ children, className = '', icon: Icon, title }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.4 }}
+    className={`bg-white rounded-xl shadow-md border border-slate-100 hover:shadow-lg transition-shadow p-6 ${className}`}
+  >
+    {title && (
+      <div className="flex items-center gap-2 mb-4">
+        {Icon && <Icon className="w-5 h-5 text-sky-600" />}
+        <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
+      </div>
+    )}
+    {children}
+  </motion.div>
+)
+
+// Reusable Tag Component
+const Tag = ({ children, editable, onChange, onRemove }) => {
+  const [isEditing, setIsEditing] = useState(false)
+  const [value, setValue] = useState(children)
+
+  if (editable && isEditing) {
+    return (
+      <div className="inline-flex items-center gap-1">
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          onBlur={() => {
+            setIsEditing(false)
+            onChange(value)
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              setIsEditing(false)
+              onChange(value)
+            }
+          }}
+          className="px-3 py-1.5 bg-primary-50 text-primary-700 rounded-full text-sm border border-primary-200 focus:ring-2 focus:ring-primary-500 focus:outline-none"
+          autoFocus
+        />
+      </div>
+    )
+  }
+
+  return (
+    <span
+      onClick={() => editable && setIsEditing(true)}
+      className={`inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-primary-50 to-sky-50 text-primary-700 rounded-full text-sm cursor-default border border-primary-100 ${
+        editable ? 'cursor-pointer hover:from-primary-100 hover:to-sky-100 hover:border-primary-200' : ''
+      }`}
+    >
+      {children}
+    </span>
+  )
+}
+
+// Reusable TimelineItem Component
+const TimelineItem = ({ period, title, location, description, points, editable, onChange, dir }) => (
+  <div className={`relative ${dir === 'rtl' ? 'pr-6 border-r-2 right-[-9px]' : 'pl-6 border-l-2 left-[-9px]'} pb-6 border-slate-200 last:border-0 last:pb-0`}>
+    <div className={`absolute ${dir === 'rtl' ? 'right-[-9px]' : 'left-[-9px]'} top-0 w-4 h-4 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full border-2 border-white shadow-sm`}></div>
+    <div className="mb-2">
+      <Field
+        label=""
+        value={period}
+        onChange={(v) => onChange({ ...onChange.currentData, period: v })}
+        editable={editable}
+      />
+    </div>
+    <div className="mb-1">
+      <Field
+        label=""
+        value={title}
+        onChange={(v) => onChange({ ...onChange.currentData, title: v })}
+        editable={editable}
+      />
+    </div>
+    {location && (
+      <div className="mb-2">
+        <Field
+          label=""
+          value={location}
+          onChange={(v) => onChange({ ...onChange.currentData, location: v })}
+          editable={editable}
+        />
+      </div>
+    )}
+    {description && (
+      <div className="mb-2">
+        <Field
+          label=""
+          value={description}
+          onChange={(v) => onChange({ ...onChange.currentData, description: v })}
+          editable={editable}
+          multiline
+        />
+      </div>
+    )}
+    {points && points.length > 0 && (
+      <ul className={`list-disc list-inside text-slate-600 text-sm space-y-1 ${dir === 'rtl' ? 'mr-2' : 'ml-2'}`}>
+        {points.map((point, idx) => (
+          <li key={idx}>
+            <Field
+              label=""
+              value={point}
+              onChange={(v) => {
+                const newPoints = [...points]
+                newPoints[idx] = v
+                onChange({ ...onChange.currentData, points: newPoints })
+              }}
+              editable={editable}
+            />
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+)
+
+export default function App() {
+  const [editable, setEditable] = useState(false)
+  const [language, setLanguage] = useState('he') // 'he' for Hebrew, 'en' for English
+  
+  const translations = {
+    he: {
+      name: 'ליאה פרגן',
+      title: 'סטודנטית לחשבונאות | שנה ג׳',
+      location: 'רעננה, ישראל',
+      birthDate: '26 בדצמבר 2002',
+      profile: 'אחראית ושיטתית, בעלת יכולת הסתגלות מהירה וכושר למידה גבוה. עובדת לפי נהלים קפדניים, מתמודדת היטב עם מצבי לחץ ומפגינה רמת דיסקרטיות ואמינות גבוהה. דייקנית, אחראית ודיסקרטית — עובדת לפי נהלים קבועים, יכולה לעבוד בצוות ובצורה עצמאית, בעלת מוסר עבודה גבוה ויכולת למידה מהירה. מחפשת הזדמנות להתחיל תפקיד בתחום החשבונאות, לרכוש ניסיון מעשי ולהשתלב בסביבת עבודה מקצועית ויציבה.',
+      objective: 'השתלבות בתפקיד התחלתי בתחום החשבונאות, הכספים, נהלת חשבונות או אדמיניסטרציה פיננסית, תוך שימוש ביכולות סדר, דיוק, אחריות ועבודה עם נתונים.',
+      labels: {
+        email: 'אימייל',
+        phone: 'טלפון',
+        location: 'מיקום',
+        birthDate: 'תאריך לידה'
+      },
+      sections: {
+        profile: 'פרופיל אישי',
+        objective: 'יעד מקצועי',
+        education: 'השכלה והכשרות',
+        experience: 'ניסיון תעסוקתי',
+        military: 'שירות צבאי',
+        skills: 'שליטה בתוכנות מחשב',
+        volunteering: 'התנדבות',
+        languages: 'שפות',
+        sports: 'כישורים ספורטיביים',
+        strengths: 'חוזקות'
+      },
+      buttons: {
+        print: 'הדפס / שמור PDF',
+        edit: 'ערוך טקסט',
+        save: 'שמור שינויים',
+        reset: 'איפוס',
+      },
+      footer: 'CV מקצועי | ליאה פרגן'
+    },
+    en: {
+      name: 'Lea Fergan',
+      title: 'Accounting Student | 3rd Year',
+      location: 'Raanana, Israel',
+      birthDate: 'December 26, 2002',
+      profile: 'Responsible and methodical, with quick adaptability and high learning ability. Works according to strict procedures, handles pressure situations well and demonstrates high level of discretion and reliability. Precise, responsible and discreet — works according to established procedures, can work in a team and independently, has high work ethic and quick learning ability. Seeking an opportunity to start a role in the accounting field, gain practical experience and integrate into a professional and stable work environment.',
+      objective: 'Integration into an entry-level position in the fields of accounting, finance, bookkeeping or financial administration, using skills in organization, precision, responsibility and data work.',
+      labels: {
+        email: 'Email',
+        phone: 'Phone',
+        location: 'Location',
+        birthDate: 'Date of Birth'
+      },
+      sections: {
+        profile: 'Personal Profile',
+        objective: 'Professional Objective',
+        education: 'Education and Qualifications',
+        experience: 'Work Experience',
+        military: 'Military Service',
+        skills: 'Computer Skills',
+        volunteering: 'Volunteering',
+        languages: 'Languages',
+        sports: 'Sports Skills',
+        strengths: 'Strengths'
+      },
+      buttons: {
+        print: 'Print / Save PDF',
+        edit: 'Edit Text',
+        save: 'Save Changes',
+        reset: 'Reset',
+      },
+      footer: 'Professional CV | Lea Fergan'
+    }
+  }
+
+  const [cv, setCv] = useState({
+    name: translations[language].name,
+    title: translations[language].title,
+    email: 'lea.fergan@gmail.com',
+    phone: '0584180025',
+    location: translations[language].location,
+    birthDate: translations[language].birthDate,
+    profile: translations[language].profile,
+    objective: translations[language].objective
+  })
+
+  const [sections, setSections] = useState(() => {
+    const hebrewSections = {
+      education: [
+        {
+          id: 1,
+          period: '2023 — היום',
+          title: 'תואר ראשון B.A בחשבונאות',
+          location: 'המרכז האקדמי שערי מדע ומשפט, הוד השרון',
+          description: 'שנה ג׳ לתואר ראשון בחשבונאות. רכישת ידע בתחומי חשבונאות, כספים, דוחות, בקרה וניתוח נתונים.'
+        },
+        {
+          id: 2,
+          period: '2015 — 2020',
+          title: 'השכלה תיכונית מלאה — 12 שנות לימוד',
+          location: 'תיכון רעננה — אמי״ת רננים',
+          description: 'סיום לימודים תיכוניים מלאים, בסיס לימודי רחב והרגלי למידה מסודרים.'
+        },
+        {
+          id: 3,
+          period: '2020',
+          title: 'קורס אבטחה — תעודת הסמכה',
+          location: 'מרכז להכשרת מאבטחים, רעננה',
+          description: 'הכשרה מקצועית בתחום האבטחה, עבודה לפי נהלים, אחריות, ערנות ותגובה מהירה למצבי חירום.'
+        }
+      ],
+      experience: [
+        {
+          id: 1,
+          period: '2022 — היום',
+          title: 'שמרטפית',
+          location: 'משפחות פרטיות, רעננה',
+          points: [
+            'טיפול וליווי ילדים תוך אחריות על בטיחותם ורווחתם.',
+            'פיתוח סבלנות, אמינות ויחסי אנוש מצוינים.',
+            'יכולת הקשבה, פתרון בעיות והתנהלות רגועה במצבים משתנים.'
+          ]
+        }
+      ],
+      military: {
+        id: 1,
+        period: 'שירות צבאי',
+        title: 'תחום הביטחון',
+        location: 'צה״ל, ישראל',
+        points: [
+          'שמירה ואבטחה במתקנים רגישים תוך עבודה מדויקת לפי נהלים.',
+          'אחריות וערנות גבוהה, עמידה בלחץ ותגובה מהירה למצבי חירום.',
+          'קבלת תעודת הצטיינות על ביצועים יוצאי דופן.'
+        ]
+      },
+      skills: [
+        'Microsoft Excel — הזנת נתונים, טבלאות, נוסחאות בסיסיות, סדר וארגון מידע.',
+        'Microsoft Word — יצירת מסמכים מקצועיים, עיצוב ועבודה עם תבניות.',
+        'Microsoft PowerPoint — הכנת מצגות ברורות ומסודרות.'
+      ],
+      volunteering: [
+        'ליווי ותמיכה באוכלוסייה מבוגרת — עבודה רגישה ואחראית.',
+        'קבלת תעודות והמלצות חיוביות בעקבות עבודה מסורה ואמינה.'
+      ],
+      languages: [
+        'צרפתית — שפת אם',
+        'עברית — רמה טובה',
+        'אנגלית — טובה'
+      ],
+      sports: [
+        'קרב מגע — חגורה חומה, בהכנה לחגורה שחורה, 10 שנות ניסיון.',
+        'טניס — 7 שנות ניסיון.'
+      ],
+      strengths: [
+        'דיוק וסדר',
+        'אחריות',
+        'אמינות',
+        'דיסקרטיות',
+        'עמידה בלחץ',
+        'למידה מהירה',
+        'יחסי אנוש',
+        'עבודה לפי נהלים',
+        'עבודה עצמאית ובצוות'
+      ]
+    }
+
+    const englishSections = {
+      education: [
+        {
+          id: 1,
+          period: '2023 — Present',
+          title: 'B.A in Accounting',
+          location: 'Shaarei Mishpat College, Hod Hasharon',
+          description: 'Third year of B.A in Accounting. Acquiring knowledge in accounting, finance, reports, control and data analysis.'
+        },
+        {
+          id: 2,
+          period: '2015 — 2020',
+          title: 'Full High School Education — 12 Years',
+          location: 'Raanana High School — Amit Renanim',
+          description: 'Completion of full high school studies, broad educational foundation and organized learning habits.'
+        },
+        {
+          id: 3,
+          period: '2020',
+          title: 'Security Course — Certification',
+          location: 'Security Training Center, Raanana',
+          description: 'Professional training in security field, working according to procedures, responsibility, alertness and quick response to emergency situations.'
+        }
+      ],
+      experience: [
+        {
+          id: 1,
+          period: '2022 — Present',
+          title: 'Babysitter',
+          location: 'Private Families, Raanana',
+          points: [
+            'Care and supervision of children with responsibility for their safety and well-being.',
+            'Developing patience, reliability and excellent interpersonal skills.',
+            'Listening ability, problem solving and calm handling of changing situations.'
+          ]
+        }
+      ],
+      military: {
+        id: 1,
+        period: 'Military Service',
+        title: 'Security Field',
+        location: 'IDF, Israel',
+        points: [
+          'Security and guarding at sensitive facilities while working precisely according to procedures.',
+          'High responsibility and alertness, standing under pressure and quick response to emergency situations.',
+          'Received certificate of excellence for outstanding performance.'
+        ]
+      },
+      skills: [
+        'Microsoft Excel — Data entry, tables, basic formulas, order and organization of information.',
+        'Microsoft Word — Creating professional documents, formatting and working with templates.',
+        'Microsoft PowerPoint — Preparing clear and organized presentations.'
+      ],
+      volunteering: [
+        'Accompaniment and support for elderly population — sensitive and responsible work.',
+        'Receiving certificates and positive recommendations following dedicated and reliable work.'
+      ],
+      languages: [
+        'French — Native language',
+        'Hebrew — Good level',
+        'English — Good'
+      ],
+      sports: [
+        'Krav Maga — Brown belt, preparing for black belt, 10 years of experience.',
+        'Tennis — 7 years of experience.'
+      ],
+      strengths: [
+        'Precision and Order',
+        'Responsibility',
+        'Reliability',
+        'Discretion',
+        'Working Under Pressure',
+        'Quick Learning',
+        'Interpersonal Skills',
+        'Working According to Procedures',
+        'Independent and Team Work'
+      ]
+    }
+
+    return language === 'he' ? hebrewSections : englishSections
+  })
+
+  const [originalCv, setOriginalCv] = useState(cv)
+  const [originalSections, setOriginalSections] = useState(sections)
+
+  useEffect(() => {
+    setOriginalCv(cv)
+    setOriginalSections(sections)
+  }, [])
+
+  useEffect(() => {
+    // Update CV data when language changes
+    setCv({
+      name: translations[language].name,
+      title: translations[language].title,
+      email: 'lea.fergan@gmail.com',
+      phone: '0584180025',
+      location: translations[language].location,
+      birthDate: translations[language].birthDate,
+      profile: translations[language].profile,
+      objective: translations[language].objective
+    })
+  }, [language])
+
+  useEffect(() => {
+    // Update sections when language changes
+    const hebrewSections = {
+      education: [
+        {
+          id: 1,
+          period: '2023 — היום',
+          title: 'תואר ראשון B.A בחשבונאות',
+          location: 'המרכז האקדמי שערי מדע ומשפט, הוד השרון',
+          description: 'שנה ג׳ לתואר ראשון בחשבונאות. רכישת ידע בתחומי חשבונאות, כספים, דוחות, בקרה וניתוח נתונים.'
+        },
+        {
+          id: 2,
+          period: '2015 — 2020',
+          title: 'השכלה תיכונית מלאה — 12 שנות לימוד',
+          location: 'תיכון רעננה — אמי״ת רננים',
+          description: 'סיום לימודים תיכוניים מלאים, בסיס לימודי רחב והרגלי למידה מסודרים.'
+        },
+        {
+          id: 3,
+          period: '2020',
+          title: 'קורס אבטחה — תעודת הסמכה',
+          location: 'מרכז להכשרת מאבטחים, רעננה',
+          description: 'הכשרה מקצועית בתחום האבטחה, עבודה לפי נהלים, אחריות, ערנות ותגובה מהירה למצבי חירום.'
+        }
+      ],
+      experience: [
+        {
+          id: 1,
+          period: '2022 — היום',
+          title: 'שמרטפית',
+          location: 'משפחות פרטיות, רעננה',
+          points: [
+            'טיפול וליווי ילדים תוך אחריות על בטיחותם ורווחתם.',
+            'פיתוח סבלנות, אמינות ויחסי אנוש מצוינים.',
+            'יכולת הקשבה, פתרון בעיות והתנהלות רגועה במצבים משתנים.'
+          ]
+        }
+      ],
+      military: {
+        id: 1,
+        period: 'שירות צבאי',
+        title: 'תחום הביטחון',
+        location: 'צה״ל, ישראל',
+        points: [
+          'שמירה ואבטחה במתקנים רגישים תוך עבודה מדויקת לפי נהלים.',
+          'אחריות וערנות גבוהה, עמידה בלחץ ותגובה מהירה למצבי חירום.',
+          'קבלת תעודת הצטיינות על ביצועים יוצאי דופן.'
+        ]
+      },
+      skills: [
+        'Microsoft Excel — הזנת נתונים, טבלאות, נוסחאות בסיסיות, סדר וארגון מידע.',
+        'Microsoft Word — יצירת מסמכים מקצועיים, עיצוב ועבודה עם תבניות.',
+        'Microsoft PowerPoint — הכנת מצגות ברורות ומסודרות.'
+      ],
+      volunteering: [
+        'ליווי ותמיכה באוכלוסייה מבוגרת — עבודה רגישה ואחראית.',
+        'קבלת תעודות והמלצות חיוביות בעקבות עבודה מסורה ואמינה.'
+      ],
+      languages: [
+        'צרפתית — שפת אם',
+        'עברית — רמה טובה',
+        'אנגלית — טובה'
+      ],
+      sports: [
+        'קרב מגע — חגורה חומה, בהכנה לחגורה שחורה, 10 שנות ניסיון.',
+        'טניס — 7 שנות ניסיון.'
+      ],
+      strengths: [
+        'דיוק וסדר',
+        'אחריות',
+        'אמינות',
+        'דיסקרטיות',
+        'עמידה בלחץ',
+        'למידה מהירה',
+        'יחסי אנוש',
+        'עבודה לפי נהלים',
+        'עבודה עצמאית ובצוות'
+      ]
+    }
+
+    const englishSections = {
+      education: [
+        {
+          id: 1,
+          period: '2023 — Present',
+          title: 'B.A in Accounting',
+          location: 'Shaarei Mishpat College, Hod Hasharon',
+          description: 'Third year of B.A in Accounting. Acquiring knowledge in accounting, finance, reports, control and data analysis.'
+        },
+        {
+          id: 2,
+          period: '2015 — 2020',
+          title: 'Full High School Education — 12 Years',
+          location: 'Raanana High School — Amit Renanim',
+          description: 'Completion of full high school studies, broad educational foundation and organized learning habits.'
+        },
+        {
+          id: 3,
+          period: '2020',
+          title: 'Security Course — Certification',
+          location: 'Security Training Center, Raanana',
+          description: 'Professional training in security field, working according to procedures, responsibility, alertness and quick response to emergency situations.'
+        }
+      ],
+      experience: [
+        {
+          id: 1,
+          period: '2022 — Present',
+          title: 'Babysitter',
+          location: 'Private Families, Raanana',
+          points: [
+            'Care and supervision of children with responsibility for their safety and well-being.',
+            'Developing patience, reliability and excellent interpersonal skills.',
+            'Listening ability, problem solving and calm handling of changing situations.'
+          ]
+        }
+      ],
+      military: {
+        id: 1,
+        period: 'Military Service',
+        title: 'Security Field',
+        location: 'IDF, Israel',
+        points: [
+          'Security and guarding at sensitive facilities while working precisely according to procedures.',
+          'High responsibility and alertness, standing under pressure and quick response to emergency situations.',
+          'Received certificate of excellence for outstanding performance.'
+        ]
+      },
+      skills: [
+        'Microsoft Excel — Data entry, tables, basic formulas, order and organization of information.',
+        'Microsoft Word — Creating professional documents, formatting and working with templates.',
+        'Microsoft PowerPoint — Preparing clear and organized presentations.'
+      ],
+      volunteering: [
+        'Accompaniment and support for elderly population — sensitive and responsible work.',
+        'Receiving certificates and positive recommendations following dedicated and reliable work.'
+      ],
+      languages: [
+        'French — Native language',
+        'Hebrew — Good level',
+        'English — Good'
+      ],
+      sports: [
+        'Krav Maga — Brown belt, preparing for black belt, 10 years of experience.',
+        'Tennis — 7 years of experience.'
+      ],
+      strengths: [
+        'Precision and Order',
+        'Responsibility',
+        'Reliability',
+        'Discretion',
+        'Working Under Pressure',
+        'Quick Learning',
+        'Interpersonal Skills',
+        'Working According to Procedures',
+        'Independent and Team Work'
+      ]
+    }
+
+    setSections(language === 'he' ? hebrewSections : englishSections)
+  }, [language])
+
+  const handlePrint = () => {
+    window.print()
+  }
+
+  const handleEditToggle = () => {
+    if (editable) {
+      setEditable(false)
+    } else {
+      setEditable(true)
+    }
+  }
+
+  const handleSave = () => {
+    setEditable(false)
+    setOriginalCv(cv)
+    setOriginalSections(sections)
+  }
+
+  const handleReset = () => {
+    setCv(originalCv)
+    setSections(originalSections)
+    setEditable(false)
+  }
+
+  const updateEducationItem = (id, newData) => {
+    setSections({
+      ...sections,
+      education: sections.education.map(item => item.id === id ? { ...item, ...newData } : item)
+    })
+  }
+
+  const updateExperienceItem = (id, newData) => {
+    setSections({
+      ...sections,
+      experience: sections.experience.map(item => item.id === id ? { ...item, ...newData } : item)
+    })
+  }
+
+  const updateMilitary = (newData) => {
+    setSections({
+      ...sections,
+      military: { ...sections.military, ...newData }
+    })
+  }
+
+  const handleLanguageToggle = () => {
+    setLanguage(prev => prev === 'he' ? 'en' : 'he')
+    document.documentElement.dir = language === 'he' ? 'ltr' : 'rtl'
+    document.documentElement.lang = language === 'he' ? 'en' : 'he'
+  }
+
+  return (
+    <div className={`min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-sky-50 py-8 px-4 ${language === 'he' ? 'rtl' : 'ltr'}`}>
+      <div className="max-w-4xl mx-auto">
+        {/* Action Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex flex-wrap gap-3 justify-center mb-8 no-print"
+        >
+          <button
+            onClick={handlePrint}
+            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg hover:from-primary-700 hover:to-primary-600 transition-all shadow-md hover:shadow-lg"
+          >
+            <Printer className="w-4 h-4" />
+            {translations[language].buttons.print}
+          </button>
+          <button
+            onClick={handleLanguageToggle}
+            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-500 text-white rounded-lg hover:from-purple-700 hover:to-purple-600 transition-all shadow-md hover:shadow-lg"
+          >
+            <Languages className="w-4 h-4" />
+            {language === 'he' ? 'English' : 'עברית'}
+          </button>
+          {!editable ? (
+            <button
+              onClick={handleEditToggle}
+              className="flex items-center gap-2 px-6 py-3 bg-white text-primary-600 border-2 border-primary-200 rounded-lg hover:border-primary-400 hover:bg-primary-50 transition-all shadow-sm hover:shadow-md"
+            >
+              <Edit3 className="w-4 h-4" />
+              {translations[language].buttons.edit}
+            </button>
+          ) : (
+            <>
+              <button
+                onClick={handleSave}
+                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white rounded-lg hover:from-emerald-700 hover:to-emerald-600 transition-all shadow-md hover:shadow-lg"
+              >
+                <Save className="w-4 h-4" />
+                {translations[language].buttons.save}
+              </button>
+              <button
+                onClick={handleReset}
+                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-rose-600 to-rose-500 text-white rounded-lg hover:from-rose-700 hover:to-rose-600 transition-all shadow-md hover:shadow-lg"
+              >
+                <X className="w-4 h-4" />
+                {translations[language].buttons.reset}
+              </button>
+            </>
+          )}
+        </motion.div>
+
+        {/* CV Container */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="cv-container bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100"
+        >
+          {/* Header */}
+          <div className="bg-gradient-to-l from-primary-900 via-primary-800 to-primary-700 text-white p-6 md:p-8 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-l from-primary-900/50 to-transparent"></div>
+            <div className="relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between md:gap-6 mb-4">
+                <div className="flex items-center gap-3 mb-3 md:mb-0">
+                  <User className="w-6 h-6 text-white flex-shrink-0" />
+                  {editable ? (
+                    <input
+                      type="text"
+                      value={cv.name}
+                      onChange={(e) => setCv({ ...cv, name: e.target.value })}
+                      className="bg-transparent border-none text-white text-xl font-semibold focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-2 py-1 w-full max-w-xs"
+                    />
+                  ) : (
+                    <span className="text-white text-xl font-semibold truncate">{cv.name}</span>
+                  )}
+                </div>
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-primary-200 flex-shrink-0" />
+                  {editable ? (
+                    <input
+                      type="text"
+                      value={cv.title}
+                      onChange={(e) => setCv({ ...cv, title: e.target.value })}
+                      className="bg-transparent border-none text-white text-base focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-2 py-1 w-full max-w-xs"
+                    />
+                  ) : (
+                    <span className="text-white text-base truncate">{cv.title}</span>
+                  )}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
+                <div className="flex items-center gap-2">
+                  <Mail className="w-4 h-4 text-primary-200 flex-shrink-0" />
+                  <div className="min-w-0 flex-1">
+                    <span className="text-primary-100 text-xs block">{translations[language].labels.email}:</span>
+                    {editable ? (
+                      <input
+                        type="text"
+                        value={cv.email}
+                        onChange={(e) => setCv({ ...cv, email: e.target.value })}
+                        className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-1 py-0.5 w-full truncate"
+                      />
+                    ) : (
+                      <span className="text-white text-sm block truncate">{cv.email}</span>
+                    )}
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 text-primary-200 flex-shrink-0" />
+                  <div className="min-w-0 flex-1">
+                    <span className="text-primary-100 text-xs block">{translations[language].labels.phone}:</span>
+                    {editable ? (
+                      <input
+                        type="text"
+                        value={cv.phone}
+                        onChange={(e) => setCv({ ...cv, phone: e.target.value })}
+                        className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-1 py-0.5 w-full truncate"
+                      />
+                    ) : (
+                      <span className="text-white text-sm block truncate">{cv.phone}</span>
+                    )}
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-primary-200 flex-shrink-0" />
+                  <div className="min-w-0 flex-1">
+                    <span className="text-primary-100 text-xs block">{translations[language].labels.location}:</span>
+                    {editable ? (
+                      <input
+                        type="text"
+                        value={cv.location}
+                        onChange={(e) => setCv({ ...cv, location: e.target.value })}
+                        className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-1 py-0.5 w-full truncate"
+                      />
+                    ) : (
+                      <span className="text-white text-sm block truncate">{cv.location}</span>
+                    )}
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-primary-200 flex-shrink-0" />
+                  <div className="min-w-0 flex-1">
+                    <span className="text-primary-100 text-xs block">{translations[language].labels.birthDate}:</span>
+                    {editable ? (
+                      <input
+                        type="text"
+                        value={cv.birthDate}
+                        onChange={(e) => setCv({ ...cv, birthDate: e.target.value })}
+                        className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-1 py-0.5 w-full truncate"
+                      />
+                    ) : (
+                      <span className="text-white text-sm block truncate">{cv.birthDate}</span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+            </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="p-8">
+            {/* Profile Section */}
+            <Card className="mb-6" icon={User} title={translations[language].sections.profile}>
+              <Field
+                label=""
+                value={cv.profile}
+                onChange={(v) => setCv({ ...cv, profile: v })}
+                editable={editable}
+                multiline
+              />
+            </Card>
+
+            {/* Objective Section */}
+            <Card className="mb-6" icon={Sparkles} title={translations[language].sections.objective}>
+              <Field
+                label=""
+                value={cv.objective}
+                onChange={(v) => setCv({ ...cv, objective: v })}
+                editable={editable}
+                multiline
+              />
+            </Card>
+
+            {/* Education Section */}
+            <Card className="mb-6" icon={GraduationCap} title={translations[language].sections.education}>
+              {sections.education.map((item) => (
+                <TimelineItem
+                  key={item.id}
+                  {...item}
+                  editable={editable}
+                  dir={language === 'he' ? 'rtl' : 'ltr'}
+                  onChange={{ currentData: item, call: (newData) => updateEducationItem(item.id, newData) }}
+                />
+              ))}
+            </Card>
+
+            {/* Experience Section */}
+            <Card className="mb-6" icon={Briefcase} title={translations[language].sections.experience}>
+              {sections.experience.map((item) => (
+                <TimelineItem
+                  key={item.id}
+                  {...item}
+                  editable={editable}
+                  dir={language === 'he' ? 'rtl' : 'ltr'}
+                  onChange={{ currentData: item, call: (newData) => updateExperienceItem(item.id, newData) }}
+                />
+              ))}
+            </Card>
+
+            {/* Military Service Section */}
+            <Card className="mb-6" icon={Shield} title={translations[language].sections.military}>
+              <TimelineItem
+                {...sections.military}
+                editable={editable}
+                dir={language === 'he' ? 'rtl' : 'ltr'}
+                onChange={{ currentData: sections.military, call: updateMilitary }}
+              />
+            </Card>
+
+            {/* Computer Skills Section */}
+            <Card className="mb-6" icon={Laptop} title={translations[language].sections.skills}>
+              <ul className="space-y-2">
+                {sections.skills.map((skill, idx) => (
+                  <li key={idx}>
+                    <Field
+                      label=""
+                      value={skill}
+                      onChange={(v) => {
+                        const newSkills = [...sections.skills]
+                        newSkills[idx] = v
+                        setSections({ ...sections, skills: newSkills })
+                      }}
+                      editable={editable}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </Card>
+
+            {/* Volunteering Section */}
+            <Card className="mb-6" icon={HeartHandshake} title={translations[language].sections.volunteering}>
+              <ul className="space-y-2">
+                {sections.volunteering.map((item, idx) => (
+                  <li key={idx}>
+                    <Field
+                      label=""
+                      value={item}
+                      onChange={(v) => {
+                        const newVolunteering = [...sections.volunteering]
+                        newVolunteering[idx] = v
+                        setSections({ ...sections, volunteering: newVolunteering })
+                      }}
+                      editable={editable}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </Card>
+
+            {/* Languages Section */}
+            <Card className="mb-6" icon={Languages} title={translations[language].sections.languages}>
+              <ul className="space-y-2">
+                {sections.languages.map((lang, idx) => (
+                  <li key={idx}>
+                    <Field
+                      label=""
+                      value={lang}
+                      onChange={(v) => {
+                        const newLanguages = [...sections.languages]
+                        newLanguages[idx] = v
+                        setSections({ ...sections, languages: newLanguages })
+                      }}
+                      editable={editable}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </Card>
+
+            {/* Sports Skills Section */}
+            <Card className="mb-6" icon={Trophy} title={translations[language].sections.sports}>
+              <ul className="space-y-2">
+                {sections.sports.map((sport, idx) => (
+                  <li key={idx}>
+                    <Field
+                      label=""
+                      value={sport}
+                      onChange={(v) => {
+                        const newSports = [...sections.sports]
+                        newSports[idx] = v
+                        setSections({ ...sections, sports: newSports })
+                      }}
+                      editable={editable}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </Card>
+
+            {/* Strengths Section */}
+            <Card className="mb-6" icon={Sparkles} title={translations[language].sections.strengths}>
+              <div className="flex flex-wrap gap-2">
+                {sections.strengths.map((strength, idx) => (
+                  <Tag key={idx} editable={editable}>
+                    {strength}
+                  </Tag>
+                ))}
+              </div>
+            </Card>
+          </div>
+        </motion.div>
+
+        {/* Footer */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+          className="text-center mt-8 text-slate-500 text-sm no-print"
+        >
+          <p>{translations[language].footer}</p>
+        </motion.div>
+      </div>
+    </div>
+  )
+}
