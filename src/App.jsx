@@ -224,8 +224,8 @@ export default function App() {
       title: 'Accounting Student | 3rd Year',
       location: 'Raanana, Israel',
       birthDate: 'December 26, 2002',
-      profile: 'Responsible and methodical, with quick adaptability and high learning ability. Works according to strict procedures, handles pressure situations well and demonstrates high level of discretion and reliability. Precise, responsible and discreet — works according to established procedures, can work in a team and independently, has high work ethic and quick learning ability. Seeking an opportunity to start a role in the accounting field, gain practical experience and integrate into a professional and stable work environment.',
-      objective: 'Integration into an entry-level position in the fields of accounting, finance, bookkeeping or financial administration, using skills in organization, precision, responsibility and data work.',
+      profile: 'Responsible and methodical, with quick adaptability and high learning ability. Works according to strict procedures, handles pressure situations well, and demonstrates a high level of discretion and reliability. Precise, responsible, and discreet — works according to established procedures, can work in a team and independently, has a high work ethic, and possesses quick learning ability. Seeking an opportunity to start a role in the accounting field, gain practical experience, and integrate into a professional and stable work environment.',
+      objective: 'To secure an entry-level position in the fields of accounting, finance, bookkeeping, or financial administration, utilizing skills in organization, precision, responsibility, and data management.',
       labels: {
         email: 'Email',
         phone: 'Phone',
@@ -350,23 +350,23 @@ export default function App() {
         {
           id: 1,
           period: '2023 — Present',
-          title: 'B.A in Accounting',
+          title: 'B.A. in Accounting',
           location: 'Shaarei Mishpat College, Hod Hasharon',
-          description: 'Third year of B.A in Accounting. Acquiring knowledge in accounting, finance, reports, control and data analysis.'
+          description: 'Third year of B.A. studies in Accounting. Acquiring knowledge in accounting, finance, reporting, control, and data analysis.'
         },
         {
           id: 2,
           period: '2015 — 2020',
           title: 'Full High School Education — 12 Years',
           location: 'Raanana High School — Amit Renanim',
-          description: 'Completion of full high school studies, broad educational foundation and organized learning habits.'
+          description: 'Completion of full high school studies, providing a broad educational foundation and organized learning habits.'
         },
         {
           id: 3,
           period: '2020',
           title: 'Security Course — Certification',
           location: 'Security Training Center, Raanana',
-          description: 'Professional training in security field, working according to procedures, responsibility, alertness and quick response to emergency situations.'
+          description: 'Professional training in the security field, including working according to procedures, responsibility, alertness, and quick response to emergency situations.'
         }
       ],
       experience: [
@@ -376,9 +376,9 @@ export default function App() {
           title: 'Babysitter',
           location: 'Private Families, Raanana',
           points: [
-            'Care and supervision of children with responsibility for their safety and well-being.',
-            'Developing patience, reliability and excellent interpersonal skills.',
-            'Listening ability, problem solving and calm handling of changing situations.'
+            'Care and supervision of children with full responsibility for their safety and well-being.',
+            'Developed patience, reliability, and excellent interpersonal skills.',
+            'Demonstrated listening ability, problem-solving skills, and calm handling of changing situations.'
           ]
         }
       ],
@@ -389,26 +389,26 @@ export default function App() {
         location: 'IDF, Israel',
         points: [
           'Security and guarding at sensitive facilities while working precisely according to procedures.',
-          'High responsibility and alertness, standing under pressure and quick response to emergency situations.',
+          'Demonstrated high responsibility and alertness, ability to work under pressure, and quick response to emergency situations.',
           'Received certificate of excellence for outstanding performance.'
         ]
       },
       skills: [
-        'Microsoft Excel — Data entry, tables, basic formulas, order and organization of information.',
-        'Microsoft Word — Creating professional documents, formatting and working with templates.',
+        'Microsoft Excel — Data entry, tables, basic formulas, and information organization.',
+        'Microsoft Word — Creating professional documents, formatting, and working with templates.',
         'Microsoft PowerPoint — Preparing clear and organized presentations.'
       ],
       volunteering: [
-        'Accompaniment and support for elderly population — sensitive and responsible work.',
-        'Receiving certificates and positive recommendations following dedicated and reliable work.'
+        'Accompaniment and support for the elderly population — sensitive and responsible work.',
+        'Received certificates and positive recommendations following dedicated and reliable work.'
       ],
       languages: [
         'French — Native language',
         'Hebrew — Good level',
-        'English — Good'
+        'English — Good level'
       ],
       sports: [
-        'Krav Maga — Brown belt, preparing for black belt, 10 years of experience.',
+        'Krav Maga — Brown belt, currently preparing for black belt, 10 years of experience.',
         'Tennis — 7 years of experience.'
       ],
       strengths: [
@@ -535,23 +535,23 @@ export default function App() {
         {
           id: 1,
           period: '2023 — Present',
-          title: 'B.A in Accounting',
+          title: 'B.A. in Accounting',
           location: 'Shaarei Mishpat College, Hod Hasharon',
-          description: 'Third year of B.A in Accounting. Acquiring knowledge in accounting, finance, reports, control and data analysis.'
+          description: 'Third year of B.A. studies in Accounting. Acquiring knowledge in accounting, finance, reporting, control, and data analysis.'
         },
         {
           id: 2,
           period: '2015 — 2020',
           title: 'Full High School Education — 12 Years',
           location: 'Raanana High School — Amit Renanim',
-          description: 'Completion of full high school studies, broad educational foundation and organized learning habits.'
+          description: 'Completion of full high school studies, providing a broad educational foundation and organized learning habits.'
         },
         {
           id: 3,
           period: '2020',
           title: 'Security Course — Certification',
           location: 'Security Training Center, Raanana',
-          description: 'Professional training in security field, working according to procedures, responsibility, alertness and quick response to emergency situations.'
+          description: 'Professional training in the security field, including working according to procedures, responsibility, alertness, and quick response to emergency situations.'
         }
       ],
       experience: [
@@ -561,9 +561,9 @@ export default function App() {
           title: 'Babysitter',
           location: 'Private Families, Raanana',
           points: [
-            'Care and supervision of children with responsibility for their safety and well-being.',
-            'Developing patience, reliability and excellent interpersonal skills.',
-            'Listening ability, problem solving and calm handling of changing situations.'
+            'Care and supervision of children with full responsibility for their safety and well-being.',
+            'Developed patience, reliability, and excellent interpersonal skills.',
+            'Demonstrated listening ability, problem-solving skills, and calm handling of changing situations.'
           ]
         }
       ],
@@ -574,26 +574,26 @@ export default function App() {
         location: 'IDF, Israel',
         points: [
           'Security and guarding at sensitive facilities while working precisely according to procedures.',
-          'High responsibility and alertness, standing under pressure and quick response to emergency situations.',
+          'Demonstrated high responsibility and alertness, ability to work under pressure, and quick response to emergency situations.',
           'Received certificate of excellence for outstanding performance.'
         ]
       },
       skills: [
-        'Microsoft Excel — Data entry, tables, basic formulas, order and organization of information.',
-        'Microsoft Word — Creating professional documents, formatting and working with templates.',
+        'Microsoft Excel — Data entry, tables, basic formulas, and information organization.',
+        'Microsoft Word — Creating professional documents, formatting, and working with templates.',
         'Microsoft PowerPoint — Preparing clear and organized presentations.'
       ],
       volunteering: [
-        'Accompaniment and support for elderly population — sensitive and responsible work.',
-        'Receiving certificates and positive recommendations following dedicated and reliable work.'
+        'Accompaniment and support for the elderly population — sensitive and responsible work.',
+        'Received certificates and positive recommendations following dedicated and reliable work.'
       ],
       languages: [
         'French — Native language',
         'Hebrew — Good level',
-        'English — Good'
+        'English — Good level'
       ],
       sports: [
-        'Krav Maga — Brown belt, preparing for black belt, 10 years of experience.',
+        'Krav Maga — Brown belt, currently preparing for black belt, 10 years of experience.',
         'Tennis — 7 years of experience.'
       ],
       strengths: [
