@@ -19,6 +19,50 @@ body {
   overflow-x: hidden;
 }
 
+/* Remove default bullets and use dashes */
+ul {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+ul li {
+  position: relative;
+  padding-left: 1rem !important;
+}
+
+ul li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #64748b;
+  font-weight: bold;
+}
+
+/* Optimize text layout */
+h1, h2, h3 {
+  font-weight: 700 !important;
+}
+
+strong, b {
+  font-weight: 700 !important;
+}
+
+/* Date and period styling */
+.period {
+  font-weight: 600 !important;
+  color: #475569 !important;
+}
+
+.location {
+  font-weight: 500 !important;
+  color: #64748b !important;
+}
+
+.title {
+  font-weight: 700 !important;
+  color: #1e293b !important;
+}
+
 /* Mobile optimization for iPhone */
 @media (max-width: 640px) {
   * {

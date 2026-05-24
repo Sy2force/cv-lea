@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 // Reusable Field Component
-const Field = ({ label, value, onChange, editable, multiline = false }) => {
+const Field = ({ label, value, onChange, editable, multiline = false, className = '' }) => {
   if (editable) {
     if (multiline) {
       return (
@@ -31,7 +31,7 @@ const Field = ({ label, value, onChange, editable, multiline = false }) => {
   }
 
   return (
-    <div className="mb-2 w-full">
+    <div className={`mb-2 w-full ${className}`}>
       {label && <span className="text-slate-500 text-sm block">{label}:</span>}
       <span className="text-slate-800 text-sm block break-words">{value}</span>
     </div>
@@ -108,6 +108,7 @@ const TimelineItem = ({ period, title, location, description, points, editable, 
         value={period}
         onChange={(v) => onChange({ ...onChange.currentData, period: v })}
         editable={editable}
+        className="period"
       />
     </div>
     <div className="mb-1">
@@ -116,6 +117,7 @@ const TimelineItem = ({ period, title, location, description, points, editable, 
         value={title}
         onChange={(v) => onChange({ ...onChange.currentData, title: v })}
         editable={editable}
+        className="title"
       />
     </div>
     {location && (
@@ -125,6 +127,7 @@ const TimelineItem = ({ period, title, location, description, points, editable, 
           value={location}
           onChange={(v) => onChange({ ...onChange.currentData, location: v })}
           editable={editable}
+          className="location"
         />
       </div>
     )}
@@ -140,7 +143,7 @@ const TimelineItem = ({ period, title, location, description, points, editable, 
       </div>
     )}
     {points && points.length > 0 && (
-      <ul className={`list-disc list-inside text-slate-600 text-sm space-y-1 ${dir === 'rtl' ? 'mr-2' : 'ml-2'}`}>
+      <ul className={`text-slate-600 text-sm space-y-1 ${dir === 'rtl' ? 'mr-2' : 'ml-2'}`}>
         {points.map((point, idx) => (
           <li key={idx}>
             <Field
