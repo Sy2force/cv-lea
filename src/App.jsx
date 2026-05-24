@@ -653,7 +653,7 @@ export default function App() {
             onClick={handlePrint}
             className="px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg hover:from-primary-700 hover:to-primary-600 transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
           >
-            <Printer className="w-3 h-3 sm:w-4 sm:h-4" />
+            
             <span className="hidden sm:inline">{translations[language].buttons.print}</span>
             <span className="sm:hidden">PDF</span>
           </button>
@@ -661,7 +661,7 @@ export default function App() {
             onClick={handleLanguageToggle}
             className="px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-purple-600 to-purple-500 text-white rounded-lg hover:from-purple-700 hover:to-purple-600 transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
           >
-            <Languages className="w-3 h-3 sm:w-4 sm:h-4" />
+            
             {language === 'he' ? 'English' : 'עברית'}
           </button>
           {!editable ? (
@@ -669,7 +669,7 @@ export default function App() {
               onClick={handleEditToggle}
               className="px-4 py-2 sm:px-6 sm:py-3 bg-white text-primary-600 border-2 border-primary-200 rounded-lg hover:border-primary-400 hover:bg-primary-50 transition-all shadow-sm hover:shadow-md text-sm sm:text-base"
             >
-              <Edit3 className="w-3 h-3 sm:w-4 sm:h-4" />
+              
               <span className="hidden sm:inline">{translations[language].buttons.edit}</span>
               <span className="sm:hidden">Edit</span>
             </button>
@@ -679,7 +679,7 @@ export default function App() {
                 onClick={handleSave}
                 className="px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white rounded-lg hover:from-emerald-700 hover:to-emerald-600 transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
               >
-                <Save className="w-3 h-3 sm:w-4 sm:h-4" />
+                
                 <span className="hidden sm:inline">{translations[language].buttons.save}</span>
                 <span className="sm:hidden">Save</span>
               </button>
@@ -687,7 +687,7 @@ export default function App() {
                 onClick={handleReset}
                 className="px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-rose-600 to-rose-500 text-white rounded-lg hover:from-rose-700 hover:to-rose-600 transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
               >
-                <X className="w-3 h-3 sm:w-4 sm:h-4" />
+                
                 <span className="hidden sm:inline">{translations[language].buttons.reset}</span>
                 <span className="sm:hidden">Reset</span>
               </button>
@@ -713,7 +713,7 @@ export default function App() {
             >
               <div className="flex flex-col md:flex-row md:items-center md:justify-between md:gap-6 mb-3 md:mb-4">
                 <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-0">
-                  <User className="w-5 h-5 md:w-6 md:h-6 text-white flex-shrink-0" />
+                  
                   {editable ? (
                     <input
                       type="text"
@@ -726,7 +726,7 @@ export default function App() {
                   )}
                 </div>
                 <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-primary-200 flex-shrink-0" />
+                  
                   {editable ? (
                     <input
                       type="text"
@@ -742,7 +742,7 @@ export default function App() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4">
                 <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-primary-200 flex-shrink-0" />
+                  
                   <div className="min-w-0 flex-1">
                     <span className="text-primary-100 text-xs block">{translations[language].labels.email}:</span>
                     {editable ? (
@@ -758,7 +758,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-primary-200 flex-shrink-0" />
+                  
                   <div className="min-w-0 flex-1">
                     <span className="text-primary-100 text-xs block">{translations[language].labels.phone}:</span>
                     {editable ? (
@@ -774,7 +774,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-primary-200 flex-shrink-0" />
+                  
                   <div className="min-w-0 flex-1">
                     <span className="text-primary-100 text-xs block">{translations[language].labels.location}:</span>
                     {editable ? (
@@ -790,7 +790,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-primary-200 flex-shrink-0" />
+                  
                   <div className="min-w-0 flex-1">
                     <span className="text-primary-100 text-xs block">{translations[language].labels.birthDate}:</span>
                     {editable ? (
@@ -835,7 +835,7 @@ export default function App() {
             </Card>
 
             {/* Education Section */}
-            <Card className="mb-3 md:mb-4 lg:mb-6" icon={GraduationCap} title={translations[language].sections.education}>
+            <Card className="mb-3 md:mb-4 lg:mb-6"  title={translations[language].sections.education}>
               {sections.education.map((item) => (
                 <TimelineItem
                   key={item.id}
@@ -848,7 +848,7 @@ export default function App() {
             </Card>
 
             {/* Experience Section */}
-            <Card className="mb-3 md:mb-4 lg:mb-6" icon={Briefcase} title={translations[language].sections.experience}>
+            <Card className="mb-3 md:mb-4 lg:mb-6"  title={translations[language].sections.experience}>
               {sections.experience.map((item) => (
                 <TimelineItem
                   key={item.id}
