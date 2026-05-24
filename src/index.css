@@ -5,6 +5,8 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 /* Ensure text wrapping and alignment */
@@ -17,6 +19,8 @@ body {
 .cv-container {
   max-width: 100%;
   overflow-x: hidden;
+  background: white;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 /* Remove default bullets and use dashes */
@@ -28,6 +32,7 @@ ul {
 ul li {
   position: relative;
   padding-left: 0.5rem !important;
+  margin-bottom: 0.75rem !important;
 }
 
 ul li::before {
@@ -39,6 +44,7 @@ ul li::before {
 /* Optimize text layout */
 h1, h2, h3 {
   font-weight: 700 !important;
+  letter-spacing: -0.025em !important;
 }
 
 strong, b {
@@ -48,38 +54,72 @@ strong, b {
 /* Date and period styling */
 .period {
   font-weight: 600 !important;
-  color: #475569 !important;
+  color: #6366f1 !important;
   display: inline-block !important;
   margin-bottom: 0.5rem !important;
+  font-size: 0.9rem !important;
 }
 
 .location {
   font-weight: 500 !important;
-  color: #64748b !important;
+  color: #8b5cf6 !important;
   font-style: italic !important;
+  font-size: 0.85rem !important;
 }
 
 .title {
   font-weight: 700 !important;
   color: #1e293b !important;
-  font-size: 1.05rem !important;
+  font-size: 1.1rem !important;
   margin-bottom: 0.25rem !important;
+  letter-spacing: -0.01em !important;
 }
 
 /* Timeline layout improvements */
 .relative {
-  padding: 0.5rem 0 !important;
+  padding: 0.75rem 0 !important;
 }
 
 /* Improve spacing between timeline items */
 .pb-6 {
-  padding-bottom: 1rem !important;
+  padding-bottom: 1.25rem !important;
 }
 
 /* Better list spacing */
 ul li {
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 0.75rem !important;
   padding-left: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Card styling improvements */
+.bg-white {
+  border-radius: 1rem !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Header gradient improvement */
+.bg-gradient-to-l {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+/* Section headers */
+h3 {
+  color: #4f46e5 !important;
+  border-bottom: 2px solid #e0e7ff !important;
+  padding-bottom: 0.5rem !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Contact info styling */
+.text-slate-500 {
+  color: #6b7280 !important;
+}
+
+.text-slate-800 {
+  color: #1f2937 !important;
+  line-height: 1.5 !important;
 }
 
 /* Mobile optimization for iPhone */
