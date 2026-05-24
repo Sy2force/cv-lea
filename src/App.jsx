@@ -1,27 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Calendar,
-  Printer,
-  Edit3,
-  Save,
-  X,
-  GraduationCap,
-  Briefcase,
-  Shield,
-  Languages,
-  Laptop,
-  HeartHandshake,
-  Trophy,
-  User,
-  Sparkles
-} from 'lucide-react'
 
 // Reusable Field Component
-const Field = ({ label, value, onChange, editable, multiline = false, icon: Icon }) => {
+const Field = ({ label, value, onChange, editable, multiline = false }) => {
   if (editable) {
     if (multiline) {
       return (
@@ -50,18 +31,15 @@ const Field = ({ label, value, onChange, editable, multiline = false, icon: Icon
   }
 
   return (
-    <div className="flex items-start gap-2 mb-2">
-      {Icon && <Icon className="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0" />}
-      <div>
-        {label && <span className="text-slate-500 text-sm ml-2">{label}:</span>}
-        <span className="text-slate-800 text-sm">{value}</span>
-      </div>
+    <div className="mb-2">
+      {label && <span className="text-slate-500 text-sm">{label}:</span>}
+      <span className="text-slate-800 text-sm ml-2">{value}</span>
     </div>
   )
 }
 
 // Reusable Card Component
-const Card = ({ children, className = '', icon: Icon, title }) => (
+const Card = ({ children, className = '', title }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -69,8 +47,7 @@ const Card = ({ children, className = '', icon: Icon, title }) => (
     className={`bg-white rounded-xl shadow-md border border-slate-100 hover:shadow-lg transition-shadow p-4 sm:p-5 md:p-6 ${className}`}
   >
     {title && (
-      <div className="flex items-center gap-2 mb-3 md:mb-4">
-        {Icon && <Icon className="w-4 h-4 md:w-5 md:h-5 text-sky-600" />}
+      <div className="mb-3 md:mb-4">
         <h3 className="text-base md:text-lg font-semibold text-gray-800">{title}</h3>
       </div>
     )}
@@ -836,7 +813,7 @@ export default function App() {
           {/* Main Content */}
           <div className="p-4 sm:p-6 md:p-8">
             {/* Profile Section */}
-            <Card className="mb-3 md:mb-4 lg:mb-6" icon={User} title={translations[language].sections.profile}>
+            <Card className="mb-3 md:mb-4 lg:mb-6" title={translations[language].sections.profile}>
               <Field
                 label=""
                 value={cv.profile}
@@ -847,7 +824,7 @@ export default function App() {
             </Card>
 
             {/* Objective Section */}
-            <Card className="mb-3 md:mb-4 lg:mb-6" icon={Sparkles} title={translations[language].sections.objective}>
+            <Card className="mb-3 md:mb-4 lg:mb-6" title={translations[language].sections.objective}>
               <Field
                 label=""
                 value={cv.objective}
@@ -884,7 +861,7 @@ export default function App() {
             </Card>
 
             {/* Military Service Section */}
-            <Card className="mb-3 md:mb-4 lg:mb-6" icon={Shield} title={translations[language].sections.military}>
+            <Card className="mb-3 md:mb-4 lg:mb-6" title={translations[language].sections.military}>
               <TimelineItem
                 {...sections.military}
                 editable={editable}
@@ -894,7 +871,7 @@ export default function App() {
             </Card>
 
             {/* Computer Skills Section */}
-            <Card className="mb-3 md:mb-4 lg:mb-6" icon={Laptop} title={translations[language].sections.skills}>
+            <Card className="mb-3 md:mb-4 lg:mb-6"  title={translations[language].sections.skills}>
               <ul className="space-y-1 md:space-y-2">
                 {sections.skills.map((skill, idx) => (
                   <li key={idx}>
@@ -914,7 +891,7 @@ export default function App() {
             </Card>
 
             {/* Volunteering Section */}
-            <Card className="mb-3 md:mb-4 lg:mb-6" icon={HeartHandshake} title={translations[language].sections.volunteering}>
+            <Card className="mb-3 md:mb-4 lg:mb-6" icon={HeartHandshake}icon={HeartHandshake} title={translations[language].sections.volunteering}>
               <ul className="space-y-1 md:space-y-2">
                 {sections.volunteering.map((item, idx) => (
                   <li key={idx}>
@@ -934,7 +911,7 @@ export default function App() {
             </Card>
 
             {/* Languages Section */}
-            <Card className="mb-3 md:mb-4 lg:mb-6" icon={Languages} title={translations[language].sections.languages}>
+            <Card className="mb-3 md:mb-4 lg:mb-6"  title={translations[language].sections.languages}>
               <ul className="space-y-1 md:space-y-2">
                 {sections.languages.map((lang, idx) => (
                   <li key={idx}>
@@ -954,7 +931,7 @@ export default function App() {
             </Card>
 
             {/* Sports Skills Section */}
-            <Card className="mb-3 md:mb-4 lg:mb-6" icon={Trophy} title={translations[language].sections.sports}>
+            <Card className="mb-3 md:mb-4 lg:mb-6"  title={translations[language].sections.sports}>
               <ul className="space-y-1 md:space-y-2">
                 {sections.sports.map((sport, idx) => (
                   <li key={idx}>
@@ -974,7 +951,7 @@ export default function App() {
             </Card>
 
             {/* Strengths Section */}
-            <Card className="mb-3 md:mb-4 lg:mb-6" icon={Sparkles} title={translations[language].sections.strengths}>
+            <Card className="mb-3 md:mb-4 lg:mb-6" title={translations[language].sections.strengths}>
               <div className="flex flex-wrap gap-1 md:gap-2">
                 {sections.strengths.map((strength, idx) => (
                   <Tag key={idx} editable={editable}>
