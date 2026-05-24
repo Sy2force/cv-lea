@@ -651,7 +651,7 @@ export default function App() {
         >
           <button
             onClick={handlePrint}
-            className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg hover:from-primary-700 hover:to-primary-600 transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
+            className="px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg hover:from-primary-700 hover:to-primary-600 transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
           >
             <Printer className="w-3 h-3 sm:w-4 sm:h-4" />
             <span className="hidden sm:inline">{translations[language].buttons.print}</span>
@@ -659,7 +659,7 @@ export default function App() {
           </button>
           <button
             onClick={handleLanguageToggle}
-            className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-purple-600 to-purple-500 text-white rounded-lg hover:from-purple-700 hover:to-purple-600 transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
+            className="px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-purple-600 to-purple-500 text-white rounded-lg hover:from-purple-700 hover:to-purple-600 transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
           >
             <Languages className="w-3 h-3 sm:w-4 sm:h-4" />
             {language === 'he' ? 'English' : 'עברית'}
@@ -667,7 +667,7 @@ export default function App() {
           {!editable ? (
             <button
               onClick={handleEditToggle}
-              className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-white text-primary-600 border-2 border-primary-200 rounded-lg hover:border-primary-400 hover:bg-primary-50 transition-all shadow-sm hover:shadow-md text-sm sm:text-base"
+              className="px-4 py-2 sm:px-6 sm:py-3 bg-white text-primary-600 border-2 border-primary-200 rounded-lg hover:border-primary-400 hover:bg-primary-50 transition-all shadow-sm hover:shadow-md text-sm sm:text-base"
             >
               <Edit3 className="w-3 h-3 sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">{translations[language].buttons.edit}</span>
@@ -677,7 +677,7 @@ export default function App() {
             <>
               <button
                 onClick={handleSave}
-                className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white rounded-lg hover:from-emerald-700 hover:to-emerald-600 transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
+                className="px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white rounded-lg hover:from-emerald-700 hover:to-emerald-600 transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
               >
                 <Save className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span className="hidden sm:inline">{translations[language].buttons.save}</span>
@@ -685,7 +685,7 @@ export default function App() {
               </button>
               <button
                 onClick={handleReset}
-                className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-rose-600 to-rose-500 text-white rounded-lg hover:from-rose-700 hover:to-rose-600 transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
+                className="px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-rose-600 to-rose-500 text-white rounded-lg hover:from-rose-700 hover:to-rose-600 transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
               >
                 <X className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span className="hidden sm:inline">{translations[language].buttons.reset}</span>
