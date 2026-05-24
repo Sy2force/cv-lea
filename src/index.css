@@ -5,8 +5,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
 }
 
 /* Ensure text wrapping and alignment */
@@ -21,6 +21,7 @@ body {
   overflow-x: hidden;
   background: white;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid #e5e7eb;
 }
 
 /* Remove default bullets and use dashes */
@@ -44,7 +45,8 @@ ul li::before {
 /* Optimize text layout */
 h1, h2, h3 {
   font-weight: 700 !important;
-  letter-spacing: -0.025em !important;
+  letter-spacing: 0.02em !important;
+  font-family: 'Georgia', 'Times New Roman', serif !important;
 }
 
 strong, b {
@@ -54,25 +56,28 @@ strong, b {
 /* Date and period styling */
 .period {
   font-weight: 600 !important;
-  color: #6366f1 !important;
+  color: #00338d !important;
   display: inline-block !important;
   margin-bottom: 0.5rem !important;
   font-size: 0.9rem !important;
+  font-family: 'Arial', sans-serif !important;
 }
 
 .location {
   font-weight: 500 !important;
-  color: #8b5cf6 !important;
+  color: #0055a4 !important;
   font-style: italic !important;
   font-size: 0.85rem !important;
+  font-family: 'Arial', sans-serif !important;
 }
 
 .title {
   font-weight: 700 !important;
-  color: #1e293b !important;
+  color: #0a192f !important;
   font-size: 1.1rem !important;
   margin-bottom: 0.25rem !important;
-  letter-spacing: -0.01em !important;
+  letter-spacing: 0.01em !important;
+  font-family: 'Georgia', 'Times New Roman', serif !important;
 }
 
 /* Timeline layout improvements */
@@ -94,22 +99,26 @@ ul li {
 
 /* Card styling improvements */
 .bg-white {
-  border-radius: 1rem !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  border-radius: 0.25rem !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
   margin-bottom: 1rem !important;
+  border: 1px solid #e5e7eb !important;
 }
 
 /* Header gradient improvement */
 .bg-gradient-to-l {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  background: linear-gradient(135deg, #00338d 0%, #0055a4 100%) !important;
 }
 
 /* Section headers */
 h3 {
-  color: #4f46e5 !important;
-  border-bottom: 2px solid #e0e7ff !important;
+  color: #00338d !important;
+  border-bottom: 2px solid #00338d !important;
   padding-bottom: 0.5rem !important;
   margin-bottom: 1rem !important;
+  text-transform: uppercase !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.05em !important;
 }
 
 /* Contact info styling */
@@ -120,6 +129,12 @@ h3 {
 .text-slate-800 {
   color: #1f2937 !important;
   line-height: 1.5 !important;
+}
+
+/* Professional button styling */
+button {
+  font-family: 'Arial', sans-serif !important;
+  letter-spacing: 0.02em !important;
 }
 
 /* Mobile optimization for iPhone */
