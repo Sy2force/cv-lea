@@ -9,6 +9,3 @@ services:
       - path: /*
         name: X-Frame-Options
         value: SAMEORIGIN
-    envVars:
-      - key: NODE_VERSION
-        value: 18
