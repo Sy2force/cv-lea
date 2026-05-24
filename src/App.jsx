@@ -201,8 +201,8 @@ export default function App() {
       title: 'Accounting Student | 3rd Year',
       location: 'Raanana, Israel',
       birthDate: 'December 26, 2002',
-      profile: 'Responsible and methodical, with quick adaptability and high learning ability. Works according to strict procedures, handles pressure situations well, and demonstrates a high level of discretion and reliability. Precise, responsible, and discreet — works according to established procedures, can work in a team and independently, has a high work ethic, and possesses quick learning ability. Seeking an opportunity to start a role in the accounting field, gain practical experience, and integrate into a professional and stable work environment.',
-      objective: 'To secure an entry-level position in the fields of accounting, finance, bookkeeping, or financial administration, utilizing skills in organization, precision, responsibility, and data management.',
+      profile: 'Highly motivated and detail-oriented third-year Accounting student with strong organizational skills and commitment to precision. Demonstrates excellent work ethic, reliability, and ability to work both independently and collaboratively. Experienced in following strict procedures and maintaining confidentiality. Seeking to apply academic knowledge and strong attention to detail in a professional accounting environment while contributing to team success.',
+      objective: 'To obtain an entry-level position in accounting, bookkeeping, or financial administration where I can utilize my academic background, organizational skills, and attention to detail while gaining practical experience in a professional accounting firm or corporate finance department.',
       labels: {
         email: 'Email',
         phone: 'Phone',
@@ -329,75 +329,75 @@ export default function App() {
           period: '2023 — Present',
           title: 'B.A. in Accounting',
           location: 'Shaarei Mishpat College, Hod Hasharon',
-          description: 'Third year of B.A. studies in Accounting. Acquiring knowledge in accounting, finance, reporting, control, and data analysis.'
+          description: 'Currently completing third year of B.A. studies in Accounting. Coursework includes financial accounting, managerial accounting, auditing, taxation, financial reporting, and data analysis. Developing strong foundation in accounting principles and financial management.'
         },
         {
           id: 2,
           period: '2015 — 2020',
-          title: 'Full High School Education — 12 Years',
+          title: 'High School Diploma — Full Matriculation',
           location: 'Raanana High School — Amit Renanim',
-          description: 'Completion of full high school studies, providing a broad educational foundation and organized learning habits.'
+          description: 'Completed full high school education with emphasis on mathematics and economics. Developed strong analytical skills and disciplined study habits essential for accounting profession.'
         },
         {
           id: 3,
           period: '2020',
-          title: 'Security Course — Certification',
+          title: 'Security Certification Course',
           location: 'Security Training Center, Raanana',
-          description: 'Professional training in the security field, including working according to procedures, responsibility, alertness, and quick response to emergency situations.'
+          description: 'Professional training emphasizing procedural compliance, responsibility, situational awareness, and emergency response protocols. Developed strong attention to detail and adherence to established procedures.'
         }
       ],
       experience: [
         {
           id: 1,
           period: '2022 — Present',
-          title: 'Babysitter',
+          title: 'Childcare Provider',
           location: 'Private Families, Raanana',
           points: [
-            'Care and supervision of children with full responsibility for their safety and well-being.',
-            'Developed patience, reliability, and excellent interpersonal skills.',
-            'Demonstrated listening ability, problem-solving skills, and calm handling of changing situations.'
+            'Provided responsible care and supervision ensuring safety and well-being of children.',
+            'Developed strong interpersonal skills, reliability, and ability to build trust with families.',
+            'Enhanced problem-solving abilities and maintained composure in dynamic situations.'
           ]
         }
       ],
       military: {
         id: 1,
         period: 'Military Service',
-        title: 'Security Field',
-        location: 'IDF, Israel',
+        title: 'Security Operations',
+        location: 'Israel Defense Forces',
         points: [
-          'Security and guarding at sensitive facilities while working precisely according to procedures.',
-          'Demonstrated high responsibility and alertness, ability to work under pressure, and quick response to emergency situations.',
-          'Received certificate of excellence for outstanding performance.'
+          'Maintained security protocols at sensitive facilities with strict adherence to operational procedures.',
+          'Demonstrated high level of responsibility, situational awareness, and ability to perform under pressure.',
+          'Received certificate of excellence for outstanding performance and attention to detail.'
         ]
       },
       skills: [
-        'Microsoft Excel — Data entry, tables, basic formulas, and information organization.',
-        'Microsoft Word — Creating professional documents, formatting, and working with templates.',
-        'Microsoft PowerPoint — Preparing clear and organized presentations.'
+        'Microsoft Excel — Proficient in data entry, spreadsheet management, formulas, pivot tables, and financial data organization.',
+        'Microsoft Word — Skilled in creating professional business documents, financial reports, and templates.',
+        'Microsoft PowerPoint — Experienced in preparing clear and organized business presentations.'
       ],
       volunteering: [
-        'Accompaniment and support for the elderly population — sensitive and responsible work.',
-        'Received certificates and positive recommendations following dedicated and reliable work.'
+        'Provided support and companionship to elderly community members, demonstrating empathy and reliability.',
+        'Received commendations and positive references for dedicated and trustworthy service.'
       ],
       languages: [
         'French — Native language',
-        'Hebrew — Good level',
-        'English — Good level'
+        'Hebrew — Professional proficiency',
+        'English — Professional proficiency'
       ],
       sports: [
-        'Krav Maga — Brown belt, currently preparing for black belt, 10 years of experience.',
-        'Tennis — 7 years of experience.'
+        'Krav Maga — Brown belt, currently training for black belt certification, 10 years of disciplined practice.',
+        'Tennis — 7 years of competitive experience, demonstrating commitment and perseverance.'
       ],
       strengths: [
-        'Precision and Order',
-        'Responsibility',
+        'Attention to Detail',
+        'Organizational Skills',
         'Reliability',
-        'Discretion',
+        'Confidentiality',
         'Working Under Pressure',
-        'Quick Learning',
-        'Interpersonal Skills',
-        'Working According to Procedures',
-        'Independent and Team Work'
+        'Quick Learning Ability',
+        'Strong Interpersonal Skills',
+        'Procedural Compliance',
+        'Independent and Collaborative Work'
       ]
     }
 
@@ -514,75 +514,75 @@ export default function App() {
           period: '2023 — Present',
           title: 'B.A. in Accounting',
           location: 'Shaarei Mishpat College, Hod Hasharon',
-          description: 'Third year of B.A. studies in Accounting. Acquiring knowledge in accounting, finance, reporting, control, and data analysis.'
+          description: 'Currently completing third year of B.A. studies in Accounting. Coursework includes financial accounting, managerial accounting, auditing, taxation, financial reporting, and data analysis. Developing strong foundation in accounting principles and financial management.'
         },
         {
           id: 2,
           period: '2015 — 2020',
-          title: 'Full High School Education — 12 Years',
+          title: 'High School Diploma — Full Matriculation',
           location: 'Raanana High School — Amit Renanim',
-          description: 'Completion of full high school studies, providing a broad educational foundation and organized learning habits.'
+          description: 'Completed full high school education with emphasis on mathematics and economics. Developed strong analytical skills and disciplined study habits essential for accounting profession.'
         },
         {
           id: 3,
           period: '2020',
-          title: 'Security Course — Certification',
+          title: 'Security Certification Course',
           location: 'Security Training Center, Raanana',
-          description: 'Professional training in the security field, including working according to procedures, responsibility, alertness, and quick response to emergency situations.'
+          description: 'Professional training emphasizing procedural compliance, responsibility, situational awareness, and emergency response protocols. Developed strong attention to detail and adherence to established procedures.'
         }
       ],
       experience: [
         {
           id: 1,
           period: '2022 — Present',
-          title: 'Babysitter',
+          title: 'Childcare Provider',
           location: 'Private Families, Raanana',
           points: [
-            'Care and supervision of children with full responsibility for their safety and well-being.',
-            'Developed patience, reliability, and excellent interpersonal skills.',
-            'Demonstrated listening ability, problem-solving skills, and calm handling of changing situations.'
+            'Provided responsible care and supervision ensuring safety and well-being of children.',
+            'Developed strong interpersonal skills, reliability, and ability to build trust with families.',
+            'Enhanced problem-solving abilities and maintained composure in dynamic situations.'
           ]
         }
       ],
       military: {
         id: 1,
         period: 'Military Service',
-        title: 'Security Field',
-        location: 'IDF, Israel',
+        title: 'Security Operations',
+        location: 'Israel Defense Forces',
         points: [
-          'Security and guarding at sensitive facilities while working precisely according to procedures.',
-          'Demonstrated high responsibility and alertness, ability to work under pressure, and quick response to emergency situations.',
-          'Received certificate of excellence for outstanding performance.'
+          'Maintained security protocols at sensitive facilities with strict adherence to operational procedures.',
+          'Demonstrated high level of responsibility, situational awareness, and ability to perform under pressure.',
+          'Received certificate of excellence for outstanding performance and attention to detail.'
         ]
       },
       skills: [
-        'Microsoft Excel — Data entry, tables, basic formulas, and information organization.',
-        'Microsoft Word — Creating professional documents, formatting, and working with templates.',
-        'Microsoft PowerPoint — Preparing clear and organized presentations.'
+        'Microsoft Excel — Proficient in data entry, spreadsheet management, formulas, pivot tables, and financial data organization.',
+        'Microsoft Word — Skilled in creating professional business documents, financial reports, and templates.',
+        'Microsoft PowerPoint — Experienced in preparing clear and organized business presentations.'
       ],
       volunteering: [
-        'Accompaniment and support for the elderly population — sensitive and responsible work.',
-        'Received certificates and positive recommendations following dedicated and reliable work.'
+        'Provided support and companionship to elderly community members, demonstrating empathy and reliability.',
+        'Received commendations and positive references for dedicated and trustworthy service.'
       ],
       languages: [
         'French — Native language',
-        'Hebrew — Good level',
-        'English — Good level'
+        'Hebrew — Professional proficiency',
+        'English — Professional proficiency'
       ],
       sports: [
-        'Krav Maga — Brown belt, currently preparing for black belt, 10 years of experience.',
-        'Tennis — 7 years of experience.'
+        'Krav Maga — Brown belt, currently training for black belt certification, 10 years of disciplined practice.',
+        'Tennis — 7 years of competitive experience, demonstrating commitment and perseverance.'
       ],
       strengths: [
-        'Precision and Order',
-        'Responsibility',
+        'Attention to Detail',
+        'Organizational Skills',
         'Reliability',
-        'Discretion',
+        'Confidentiality',
         'Working Under Pressure',
-        'Quick Learning',
-        'Interpersonal Skills',
-        'Working According to Procedures',
-        'Independent and Team Work'
+        'Quick Learning Ability',
+        'Strong Interpersonal Skills',
+        'Procedural Compliance',
+        'Independent and Collaborative Work'
       ]
     }
 
