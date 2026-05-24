@@ -891,7 +891,7 @@ export default function App() {
             </Card>
 
             {/* Volunteering Section */}
-            <Card className="mb-3 md:mb-4 lg:mb-6" icon={HeartHandshake}icon={HeartHandshake} title={translations[language].sections.volunteering}>
+            <Card className="mb-3 md:mb-4 lg:mb-6"  title={translations[language].sections.volunteering}>
               <ul className="space-y-1 md:space-y-2">
                 {sections.volunteering.map((item, idx) => (
                   <li key={idx}>
