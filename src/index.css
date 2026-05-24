@@ -7,6 +7,18 @@ body {
   padding: 0;
 }
 
+/* Ensure text wrapping and alignment */
+* {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.cv-container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 @layer utilities {
   .print-hidden {
     @apply hidden;

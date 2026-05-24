@@ -31,9 +31,9 @@ const Field = ({ label, value, onChange, editable, multiline = false }) => {
   }
 
   return (
-    <div className="mb-2">
-      {label && <span className="text-slate-500 text-sm">{label}:</span>}
-      <span className="text-slate-800 text-sm ml-2">{value}</span>
+    <div className="mb-2 w-full">
+      {label && <span className="text-slate-500 text-sm block">{label}:</span>}
+      <span className="text-slate-800 text-sm block break-words">{value}</span>
     </div>
   )
 }
@@ -44,14 +44,16 @@ const Card = ({ children, className = '', title }) => (
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.4 }}
-    className={`bg-white rounded-xl shadow-md border border-slate-100 hover:shadow-lg transition-shadow p-4 sm:p-5 md:p-6 ${className}`}
+    className={`bg-white rounded-xl shadow-md border border-slate-100 hover:shadow-lg transition-shadow p-4 sm:p-5 md:p-6 ${className} w-full`}
   >
     {title && (
       <div className="mb-3 md:mb-4">
         <h3 className="text-base md:text-lg font-semibold text-gray-800">{title}</h3>
       </div>
     )}
-    {children}
+    <div className="w-full">
+      {children}
+    </div>
   </motion.div>
 )
 
@@ -750,10 +752,10 @@ export default function App() {
                         type="text"
                         value={cv.email}
                         onChange={(e) => setCv({ ...cv, email: e.target.value })}
-                        className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-1 py-0.5 w-full truncate"
+                        className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-1 py-0.5 w-full break-words"
                       />
                     ) : (
-                      <span className="text-white text-sm block truncate">{cv.email}</span>
+                      <span className="text-white text-sm block break-words">{cv.email}</span>
                     )}
                   </div>
                 </div>
@@ -766,10 +768,10 @@ export default function App() {
                         type="text"
                         value={cv.phone}
                         onChange={(e) => setCv({ ...cv, phone: e.target.value })}
-                        className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-1 py-0.5 w-full truncate"
+                        className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-1 py-0.5 w-full break-words"
                       />
                     ) : (
-                      <span className="text-white text-sm block truncate">{cv.phone}</span>
+                      <span className="text-white text-sm block break-words">{cv.phone}</span>
                     )}
                   </div>
                 </div>
@@ -782,10 +784,10 @@ export default function App() {
                         type="text"
                         value={cv.location}
                         onChange={(e) => setCv({ ...cv, location: e.target.value })}
-                        className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-1 py-0.5 w-full truncate"
+                        className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-1 py-0.5 w-full break-words"
                       />
                     ) : (
-                      <span className="text-white text-sm block truncate">{cv.location}</span>
+                      <span className="text-white text-sm block break-words">{cv.location}</span>
                     )}
                   </div>
                 </div>
@@ -798,10 +800,10 @@ export default function App() {
                         type="text"
                         value={cv.birthDate}
                         onChange={(e) => setCv({ ...cv, birthDate: e.target.value })}
-                        className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-1 py-0.5 w-full truncate"
+                        className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-1 py-0.5 w-full break-words"
                       />
                     ) : (
-                      <span className="text-white text-sm block truncate">{cv.birthDate}</span>
+                      <span className="text-white text-sm block break-words">{cv.birthDate}</span>
                     )}
                   </div>
                 </div>
