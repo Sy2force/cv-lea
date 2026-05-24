@@ -23,14 +23,30 @@ body {
 @media (max-width: 640px) {
   * {
     font-size: 0.75rem !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+  
+  .cv-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0.5rem !important;
   }
   
   h1, h2 {
     font-size: 0.9rem !important;
+    text-align: center !important;
   }
   
   h3 {
     font-size: 0.8rem !important;
+    text-align: center !important;
   }
   
   .text-xl {
@@ -76,6 +92,30 @@ body {
   }
   
   .space-y-1, .space-y-2 {
+    gap: 0.25rem !important;
+  }
+  
+  /* Center grid items */
+  .grid {
+    justify-items: center !important;
+  }
+  
+  /* Prevent text overflow */
+  span, p, li, div {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+  }
+  
+  /* Center header content */
+  .flex {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  
+  .grid-cols-1, .grid-cols-2, .grid-cols-4 {
+    grid-template-columns: 1fr !important;
     gap: 0.25rem !important;
   }
 }
