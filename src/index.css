@@ -27,15 +27,13 @@ ul {
 
 ul li {
   position: relative;
-  padding-left: 1rem !important;
+  padding-left: 0.5rem !important;
 }
 
 ul li::before {
-  content: "—";
+  content: "";
   position: absolute;
   left: 0;
-  color: #64748b;
-  font-weight: bold;
 }
 
 /* Optimize text layout */
