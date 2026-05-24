@@ -640,9 +640,12 @@ export default function App() {
   }
 
   const handleLanguageToggle = () => {
-    setLanguage(prev => prev === 'he' ? 'en' : 'he')
-    document.documentElement.dir = language === 'he' ? 'rtl' : 'ltr'
-    document.documentElement.lang = language === 'he' ? 'he' : 'en'
+    setLanguage(prev => {
+      const newLang = prev === 'he' ? 'en' : 'he'
+      document.documentElement.dir = newLang === 'he' ? 'rtl' : 'ltr'
+      document.documentElement.lang = newLang
+      return newLang
+    })
   }
 
   return (
