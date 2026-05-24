@@ -642,11 +642,11 @@ export default function App() {
   const handleLanguageToggle = () => {
     setLanguage(prev => prev === 'he' ? 'en' : 'he')
     document.documentElement.dir = language === 'he' ? 'ltr' : 'rtl'
-    document.documentElement.lang = language === 'he' ? 'en' : 'he'
+    document.documentElement.lang = language === 'he' ? 'he' : 'en'
   }
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-sky-50 py-4 sm:py-6 md:py-8 px-2 sm:px-4 ${language === 'he' ? 'rtl' : 'ltr'}`}>
+    <div className={`min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-sky-50 py-4 sm:py-6 md:py-8 px-2 sm:px-4 ${language === 'he' ? 'ltr' : 'rtl'}`}>
       <div className="max-w-4xl mx-auto w-full">
         {/* Action Buttons */}
         <motion.div
