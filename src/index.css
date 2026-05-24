@@ -49,16 +49,37 @@ strong, b {
 .period {
   font-weight: 600 !important;
   color: #475569 !important;
+  display: inline-block !important;
+  margin-bottom: 0.5rem !important;
 }
 
 .location {
   font-weight: 500 !important;
   color: #64748b !important;
+  font-style: italic !important;
 }
 
 .title {
   font-weight: 700 !important;
   color: #1e293b !important;
+  font-size: 1.05rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* Timeline layout improvements */
+.relative {
+  padding: 0.5rem 0 !important;
+}
+
+/* Improve spacing between timeline items */
+.pb-6 {
+  padding-bottom: 1rem !important;
+}
+
+/* Better list spacing */
+ul li {
+  margin-bottom: 0.5rem !important;
+  padding-left: 1rem !important;
 }
 
 /* Mobile optimization for iPhone */
