@@ -101,7 +101,6 @@ const Tag = ({ children, editable, onChange, onRemove }) => {
 // Reusable TimelineItem Component
 const TimelineItem = ({ period, title, location, description, points, editable, onChange, dir }) => (
   <div className={`relative ${dir === 'rtl' ? 'pr-6 border-r-2 right-[-9px]' : 'pl-6 border-l-2 left-[-9px]'} pb-6 border-slate-200 last:border-0 last:pb-0`}>
-    <div className={`absolute ${dir === 'rtl' ? 'right-[-9px]' : 'left-[-9px]'} top-0 w-4 h-4 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full border-2 border-white shadow-sm`}></div>
     <div className="mb-2">
       <Field
         label=""
@@ -708,114 +707,93 @@ export default function App() {
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="cv-container bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100"
+          className="cv-container bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100 flex flex-col md:flex-row"
         >
-          {/* Header */}
-          <div className="bg-gradient-to-l from-primary-900 via-primary-800 to-primary-700 text-white p-4 sm:p-6 md:p-8 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-l from-primary-900/50 to-transparent"></div>
-            <div className="relative z-10">
+          {/* Sidebar */}
+          <div className="bg-gradient-to-b from-primary-900 to-primary-800 text-white p-6 md:p-8 md:w-1/3 flex flex-col gap-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between md:gap-6 mb-3 md:mb-4">
-                <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-0">
-                  
-                  {editable ? (
-                    <input
-                      type="text"
-                      value={cv.name}
-                      onChange={(e) => setCv({ ...cv, name: e.target.value })}
-                      className="bg-transparent border-none text-white text-lg md:text-xl font-semibold focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-2 py-1 w-full max-w-xs"
-                    />
-                  ) : (
-                    <span className="text-white text-lg md:text-xl font-semibold truncate">{cv.name}</span>
-                  )}
-                </div>
-                <div className="flex items-center gap-2">
-                  
-                  {editable ? (
-                    <input
-                      type="text"
-                      value={cv.title}
-                      onChange={(e) => setCv({ ...cv, title: e.target.value })}
-                      className="bg-transparent border-none text-white text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-2 py-1 w-full max-w-xs"
-                    />
-                  ) : (
-                    <span className="text-white text-sm md:text-base truncate">{cv.title}</span>
-                  )}
-                </div>
+              <div className="mb-6">
+                {editable ? (
+                  <input
+                    type="text"
+                    value={cv.name}
+                    onChange={(e) => setCv({ ...cv, name: e.target.value })}
+                    className="bg-transparent border-none text-white text-xl font-semibold focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-2 py-1 w-full"
+                  />
+                ) : (
+                  <span className="text-white text-xl font-semibold block">{cv.name}</span>
+                )}
+                {editable ? (
+                  <input
+                    type="text"
+                    value={cv.title}
+                    onChange={(e) => setCv({ ...cv, title: e.target.value })}
+                    className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-2 py-1 w-full mt-2"
+                  />
+                ) : (
+                  <span className="text-white text-sm block mt-2">{cv.title}</span>
+                )}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4">
-                <div className="flex items-center gap-2">
-                  
-                  <div className="min-w-0 flex-1">
-                    {editable ? (
-                      <input
-                        type="text"
-                        value={cv.email}
-                        onChange={(e) => setCv({ ...cv, email: e.target.value })}
-                        className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-1 py-0.5 w-full break-words"
-                      />
-                    ) : (
-                      <span className="text-white text-sm block break-words">{cv.email}</span>
-                    )}
-                  </div>
+              <div className="space-y-4">
+                <div className="border-t border-primary-700 pt-4">
+                  {editable ? (
+                    <input
+                      type="text"
+                      value={cv.email}
+                      onChange={(e) => setCv({ ...cv, email: e.target.value })}
+                      className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-2 py-1 w-full break-words"
+                    />
+                  ) : (
+                    <span className="text-white text-sm block break-words">{cv.email}</span>
+                  )}
                 </div>
-                <div className="flex items-center gap-2">
-                  
-                  <div className="min-w-0 flex-1">
-                    {editable ? (
-                      <input
-                        type="text"
-                        value={cv.phone}
-                        onChange={(e) => setCv({ ...cv, phone: e.target.value })}
-                        className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-1 py-0.5 w-full break-words"
-                      />
-                    ) : (
-                      <span className="text-white text-sm block break-words">{cv.phone}</span>
-                    )}
-                  </div>
+                <div className="border-t border-primary-700 pt-4">
+                  {editable ? (
+                    <input
+                      type="text"
+                      value={cv.phone}
+                      onChange={(e) => setCv({ ...cv, phone: e.target.value })}
+                      className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-2 py-1 w-full break-words"
+                    />
+                  ) : (
+                    <span className="text-white text-sm block break-words">{cv.phone}</span>
+                  )}
                 </div>
-                <div className="flex items-center gap-2">
-                  
-                  <div className="min-w-0 flex-1">
-                    {editable ? (
-                      <input
-                        type="text"
-                        value={cv.location}
-                        onChange={(e) => setCv({ ...cv, location: e.target.value })}
-                        className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-1 py-0.5 w-full break-words"
-                      />
-                    ) : (
-                      <span className="text-white text-sm block break-words">{cv.location}</span>
-                    )}
-                  </div>
+                <div className="border-t border-primary-700 pt-4">
+                  {editable ? (
+                    <input
+                      type="text"
+                      value={cv.location}
+                      onChange={(e) => setCv({ ...cv, location: e.target.value })}
+                      className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-2 py-1 w-full break-words"
+                    />
+                  ) : (
+                    <span className="text-white text-sm block break-words">{cv.location}</span>
+                  )}
                 </div>
-                <div className="flex items-center gap-2">
-                  
-                  <div className="min-w-0 flex-1">
-                    {editable ? (
-                      <input
-                        type="text"
-                        value={cv.birthDate}
-                        onChange={(e) => setCv({ ...cv, birthDate: e.target.value })}
-                        className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-1 py-0.5 w-full break-words"
-                      />
-                    ) : (
-                      <span className="text-white text-sm block break-words">{cv.birthDate}</span>
-                    )}
-                  </div>
+                <div className="border-t border-primary-700 pt-4">
+                  {editable ? (
+                    <input
+                      type="text"
+                      value={cv.birthDate}
+                      onChange={(e) => setCv({ ...cv, birthDate: e.target.value })}
+                      className="bg-transparent border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 rounded px-2 py-1 w-full break-words"
+                    />
+                  ) : (
+                    <span className="text-white text-sm block break-words">{cv.birthDate}</span>
+                  )}
                 </div>
               </div>
             </motion.div>
-            </div>
           </div>
 
           {/* Main Content */}
-          <div className="p-4 sm:p-6 md:p-8">
+          <div className="flex-1 p-4 sm:p-6 md:p-8">
             {/* Profile Section */}
             <Card className="mb-3 md:mb-4 lg:mb-6" title={translations[language].sections.profile}>
               <Field
