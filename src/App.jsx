@@ -749,7 +749,6 @@ export default function App() {
                 <div className="flex items-center gap-2">
                   
                   <div className="min-w-0 flex-1">
-                    <span className="text-primary-100 text-xs block">{translations[language].labels.email}:</span>
                     {editable ? (
                       <input
                         type="text"
@@ -765,7 +764,6 @@ export default function App() {
                 <div className="flex items-center gap-2">
                   
                   <div className="min-w-0 flex-1">
-                    <span className="text-primary-100 text-xs block">{translations[language].labels.phone}:</span>
                     {editable ? (
                       <input
                         type="text"
@@ -781,7 +779,6 @@ export default function App() {
                 <div className="flex items-center gap-2">
                   
                   <div className="min-w-0 flex-1">
-                    <span className="text-primary-100 text-xs block">{translations[language].labels.location}:</span>
                     {editable ? (
                       <input
                         type="text"
@@ -797,7 +794,6 @@ export default function App() {
                 <div className="flex items-center gap-2">
                   
                   <div className="min-w-0 flex-1">
-                    <span className="text-primary-100 text-xs block">{translations[language].labels.birthDate}:</span>
                     {editable ? (
                       <input
                         type="text"
