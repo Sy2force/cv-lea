@@ -19,6 +19,67 @@ body {
   overflow-x: hidden;
 }
 
+/* Mobile optimization for iPhone */
+@media (max-width: 640px) {
+  * {
+    font-size: 0.75rem !important;
+  }
+  
+  h1, h2 {
+    font-size: 0.9rem !important;
+  }
+  
+  h3 {
+    font-size: 0.8rem !important;
+  }
+  
+  .text-xl {
+    font-size: 0.85rem !important;
+  }
+  
+  .text-lg {
+    font-size: 0.8rem !important;
+  }
+  
+  .text-base {
+    font-size: 0.75rem !important;
+  }
+  
+  .text-sm {
+    font-size: 0.7rem !important;
+  }
+  
+  .text-xs {
+    font-size: 0.65rem !important;
+  }
+  
+  .p-4, .p-5, .p-6, .p-8 {
+    padding: 0.5rem !important;
+  }
+  
+  .mb-2, .mb-3, .mb-4, .mb-6 {
+    margin-bottom: 0.25rem !important;
+  }
+  
+  .gap-1, .gap-2, .gap-3, .gap-4, .gap-6, .gap-8 {
+    gap: 0.25rem !important;
+  }
+  
+  .py-1, .py-2, .py-3, .py-4 {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+  
+  .px-1, .px-2, .px-3, .px-4, .px-6 {
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+  }
+  
+  .space-y-1, .space-y-2 {
+    gap: 0.25rem !important;
+  }
+}
+
 @layer utilities {
   .print-hidden {
     @apply hidden;
